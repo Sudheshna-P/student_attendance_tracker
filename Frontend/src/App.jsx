@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import StudentProfile from './pages/StudentProfile';
+import FacultyAttendance from './pages/FacultyAttendance';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+    return (
+        <Router>
+            <div className="container mt-4">
+                <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4">
+                    <Link className="navbar-brand" to="/">Attendance System</Link>
+                    <div className="collapse navbar-collapse">
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/student">Student Profile</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/faculty">Faculty Attendance</Link>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+                <Routes>
+                    <Route path="/" element={<h2>Welcome to the Attendance System</h2>} />
+                    <Route path="/student" element={<StudentProfile />} />
+                    <Route path="/faculty" element={<FacultyAttendance />} />
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
-export default App
+export default App;
